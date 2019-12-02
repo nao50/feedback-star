@@ -1,1 +1,19 @@
-<p>feedback-star works!</p>
+<div class="feedback-star">
+  <ng-container *ngIf="!clicked">
+    <ng-container *ngFor="let star of stars; let i = index;">
+      <!-- <mat-icon [ngClass]="{'checked': star === 'star'}" (click)="clickStar(i)" (mouseenter)="enterStar(i)" (mouseleave)="leaveStar()"> -->
+      <mat-icon [ngClass]="{'checked': star === 'star'}" (click)="clickStar(i)" (click)="$event.stopPropagation()" (mouseenter)="enterStar(i)">
+        {{ star }}
+      </mat-icon>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="clicked">
+    <ng-container *ngFor="let star of stars; let i = index;">
+        <mat-icon [ngClass]="{'checked': star === 'star'}" (click)="clickStar(i)" (click)="$event.stopPropagation()">
+          {{ star }}
+        </mat-icon>
+      </ng-container>
+  </ng-container>
+
+</div>
